@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finals Encouragement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #ffffff;
+      text-shadow: 2px 2px 5px #d85c41;
+    }
+
+    .card {
+      background: #ffe0b2;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff7043;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e64a19;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .gif-container img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .questions-container button {
+      width: 50%;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Good Luck on Your Finals! 🌟</h1>
+
+  <!-- Initial Encouragement -->
+  <div class="card" id="encouragement">
+    <p>
+      Hey there! Just wanted to wish you the absolute best for your finals. 🌟<br>
+      I believe in you and know you're going to do amazing! You've got this! 💪
+    </p>
+    <p>Are you free on December 13?</p>
+    <button onclick="checkAvailability(true)">Yes</button>
+    <button onclick="checkAvailability(false)">No</button>
+  </div>
+
+  <!-- Food Preferences -->
+  <div class="card hidden" id="food-card">
+    <p>What kind of food are you in the mood for?</p>
+    <button onclick="chooseFood('Japanese')">Japanese 🍣</button>
+    <button onclick="chooseFood('Italian')">Italian 🍝</button>
+    <button onclick="chooseFood('Steakhouse')">Steakhouse 🥩</button>
+    <button onclick="chooseFood('Korean')">Korean 🍲</button>
+    <button onclick="chooseFood('American')">American 🍔</button>
+  </div>
+
+  <!-- Fun Questions -->
+  <div class="card hidden" id="fun-questions">
+    <p>How long do you think you'd survive in a zombie apocalypse?</p>
+    <div class="questions-container">
+      <button onclick="answerZombie('Until my snacks run out. 🍫')">Until my snacks run out. 🍫</button>
+      <button onclick="answerZombie('I’d immediately trip and get eaten. 🧟‍♂️')">I’d immediately trip and get eaten. 🧟‍♂️</button>
+      <button onclick="answerZombie('I’d survive forever and lead the survivors. 🏹')">I’d survive forever and lead the survivors. 🏹</button>
+      <button onclick="answerZombie('Zombies wouldn’t even want me. 🙅')">Zombies wouldn’t even want me. 🙅</button>
+    </div>
+  </div>
+
+  <!-- Favorite Person -->
+  <div class="card hidden" id="favorite-person">
+    <p>Who's your favorite person?</p>
+    <button onclick="chooseFavorite('Smallbean')">Smallbean</button>
+    <button onclick="chooseFavorite('Super Blood')">Super Blood</button>
+    <button onclick="chooseFavorite('Mila')">Mila</button>
+    <button onclick="chooseFavorite('Remy')">Remy</button>
+  </div>
+
+  <!-- Final Message -->
+  <div class="card hidden" id="final-message">
+    <p id="final-text">Great choice! Smallbean is your favorite person! 🧡</p>
+    <p>Remember, I'm always here for you. You're going to do brilliantly in your finals! Good luck! 🤗</p>
+    <div class="gif-container">
+      <img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" alt="Scales of Justice GIF">
+    </div>
+  </div>
+
+  <script>
+    // Prevent default button behavior (like navigating or submitting a form)
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default action
+      });
+    });
+
+    function checkAvailability(isAvailable) {
+      const encouragement = document.getElementById("encouragement");
+      const foodCard = document.getElementById("food-card");
+
+      if (isAvailable) {
+        encouragement.classList.add("hidden");
+        foodCard.classList.remove("hidden");
+      } else {
+        alert("No worries! Let's check again later. 😊");
+      }
+    }
+
+    function chooseFood(food) {
+      const foodCard = document.getElementById("food-card");
+      const funQuestions = document.getElementById("fun-questions");
+
+      alert(`Great choice! ${food} it is!`);
+      foodCard.classList.add("hidden");
+      funQuestions.classList.remove("hidden");
+    }
+
+    function answerZombie(answer) {
+      const funQuestions = document.getElementById("fun-questions");
+      const favoritePerson = document.getElementById("favorite-person");
+
+      alert(`Haha, good answer! "${answer}"`);
+      funQuestions.classList.add("hidden");
+      favoritePerson.classList.remove("hidden");
+    }
+
+    function chooseFavorite(favorite) {
+      const favoritePerson = document.getElementById("favorite-person");
+      const finalMessage = document.getElementById("final-message");
+
+      if (favorite === 'Smallbean') {
+        favoritePerson.classList.add("hidden");
+        finalMessage.classList.remove("hidden");
+      } else {
+        alert('No, try again! Your favorite person is Smallbean!');
+      }
+    }
+  </script>
+</body>
+</html>
